@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar</title>
+      <!--Boostrap-->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+<body class="">
+    <%- include('header')%>
+        <div class="container">
+            <div class="title">Editar Jugador</div>
+            <form action="/edit" method="POST">
+                <div class="user-details">
+                    <div class="input-box">
+                        <label class="details" for="">ID Jugador</label>
+                        <input name="py_id" value="<%=players.id%>" readonly/> 
+                    </div>
+                    <div class="input-box">
+                        <label class="details" for="">Editar Nombres Completos</label>
+                        <input name="py_name" value="<%=players.names%>" type="text" required oninvalid="this.setCustomValidity('ERROR: INGRESE DATOS')">
+                        
+                    </div>
+                    <div class="input-box">
+                        <label class="details" for="">Editar Ganancia Acumulada</label>
+                        <input name="py_gain" value="<%=players.acumprofit%>" type="number" required>
+                    </div>
+                    <div class="input-box">
+                        <label class="details" for="">Editar Numero de apuestas</label>
+                        <input name="py_bets" value="<%=players.bets%>" type="number" required>
+                    </div>
+                    <div class="input-box">
+                        <label class="details" for="">Editar Casino</label>
+                        <select name="py_casino" id="">
+                            <option value="-1">SELECCIONE NUEVO CASINO</option>
+                            <% casino.forEach((cas)=>{%>
+                                <%if(cas.id==players.idCasino){%>
+                                    <option value="<%=cas.id%>" selected="true"><%=cas.namee%></option>
+                                <%}else{%>
+                                    <option value="<%=cas.id%>"><%=cas.namee%></option>
+                                <%}%>
+                            <%})%>
+
+                        </select>
+                    </div>
+                    
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="btn btn-success btn-block botones">Editar Jugador</button>
+                    <a href="/" type="button" class="btn btn-danger botones">Cerrar</a>
+                </div>
+            </form> 
+        </div>    
+        <div class="buttons">
+            <!-- <label class="details" for="">Eliminar Jugador</label> -->
+            <button class="btn btn-info botones" id="eliminarbutton">Eliminar Jugador</button>
+        </div>
+        <%-include('footer')%>
+        <script type="text/javascript" src="/JS/hora.js"></script>   
+        <script type="text/javascript" src="/JS/EliminarBoton.js"></script>
+</body>
+
+<div class="modal fade" id="modal_eliminar" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-tittle">¿Seguro que desea eliminar?</h5>
+            </div>
+            <div class="modal-body">
+                <a class="btn btn-danger botones " type="button" href="/delete/<%=players.id%>">ELIMINAR</a>
+                <button id="cancelarb" class="btn btn-dark botones">CANCELAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

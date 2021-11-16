@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear</title>
+      <!--Boostrap-->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+<body class="">
+    <%- include('header')%>
+        <div class="container">
+            <div class="title">Crear Jugador</div>
+            <form action="/add" method="POST">
+                <div class="user-details">
+                    <div class="input-box">
+                        <label class="details" for="">Nombres Completos</label>
+                        <input type="text" name="jg_names" required oninvalid="this.setCustomValidity('ERROR: INGRESE DATOS')">
+                    </div>
+                    <div class="input-box">
+                        <label class="details" for="">Ganancia Acumulada</label>
+                        <input type="number" name="jg_gain" required>
+                    </div>
+                    <div class="input-box">
+                        <label class="details" for="">Numero de apuestas</label>
+                        <input type="number" name="jg_bets" required>
+                    </div>
+                    <div class="input-box">
+                        <label class="details" for="">Casino</label>
+                        <select name="jg_casino" id="">
+                            <option value="-1">SELECCIONE UN CASINO</option>
+                            <%casinos.forEach((cas)=>{%>
+                                <option value="<%=cas.id%>"> <%=cas.namee%> </option>
+                            <%})%>
+                        </select>
+                        
+                    </div>
+                    
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="btn btn-success btn-block botones">Crear Usuario</button>
+                    <a href="/" type="button" class="btn btn-danger botones">Cerrar</a>
+                </div>
+            </form>
+            
+        </div>    
+        <%-include('footer')%>
+        <script type="text/javascript" src="/JS/hora.js"></script>   
+</body>
+</html>

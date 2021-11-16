@@ -1,0 +1,16 @@
+#imagen{
+    background: url(/images/tragamonedas.jpg);
+}
+
+#titulo{
+    justify-content: center;
+    display: inline-block;
+}
+
+#titulomonedas{
+    font-size: 20px;
+    margin: 20px 20px 20px 20px;
+    text-align: center;
+    color: orange;
+    font-family: 'Roboto Mono', monospace;
+}

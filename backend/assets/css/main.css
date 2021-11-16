@@ -1,0 +1,20 @@
+body{
+    /* height: 100%;
+    width: 100%; */
+    background: rgb(4, 113, 166)
+}
+
+#footertext{
+    font-family: 'Roboto Mono', monospace;
+    font-size: 15px;
+}
+
+h1{
+    font-family: 'Roboto Mono', monospace;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
